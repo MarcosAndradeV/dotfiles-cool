@@ -6,7 +6,6 @@
 (load "~/.emacs.rc/rc.el")
 
 (load "~/.emacs.rc/misc-rc.el")
-(load "~/.emacs.rc/org-mode-rc.el")
 (load "~/.emacs.rc/autocommit-rc.el")
 
 ;;; Appearance
@@ -73,35 +72,14 @@
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
 
-;;; uxntal-mode
-
-(rc/require 'uxntal-mode)
-
-;;; Haskell mode
-(rc/require 'haskell-mode)
-
-(setq haskell-process-type 'cabal-new-repl)
-(setq haskell-process-log t)
-
-(add-hook 'haskell-mode-hook 'haskell-indent-mode)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'haskell-doc-mode)
-
-(require 'basm-mode)
 
 (require 'fasm-mode)
 (add-to-list 'auto-mode-alist '("\\.asm\\'" . fasm-mode))
 
-(require 'porth-mode)
-
-(require 'noq-mode)
-
-(require 'jai-mode)
 
 (require 'simpc-mode)
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
-(require 'c3-mode)
 
 ;;; Whitespace mode
 (defun rc/set-up-whitespace-handling ()
@@ -119,7 +97,6 @@
 (add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'scala-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'python-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'erlang-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'asm-mode-hook 'rc/set-up-whitespace-handling)
@@ -127,7 +104,6 @@
 (add-hook 'go-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'nim-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'yaml-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'porth-mode-hook 'rc/set-up-whitespace-handling)
 
 ;;; display-line-numbers-mode
 (when (version<= "26.0.50" emacs-version)
@@ -161,18 +137,6 @@
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
 (setq dired-mouse-drag-files t)
-
-;;; helm
-(rc/require 'helm 'helm-git-grep 'helm-ls-git)
-
-(setq helm-ff-transformer-show-only-basename nil)
-
-(global-set-key (kbd "C-c h t") 'helm-cmd-t)
-(global-set-key (kbd "C-c h g g") 'helm-git-grep)
-(global-set-key (kbd "C-c h g l") 'helm-ls-git-ls)
-(global-set-key (kbd "C-c h f") 'helm-find)
-(global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
-(global-set-key (kbd "C-c h r") 'helm-recentf)
 
 ;;; yasnippet
 (rc/require 'yasnippet)

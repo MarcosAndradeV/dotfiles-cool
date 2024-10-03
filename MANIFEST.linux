@@ -1,6 +1,6 @@
 #.Xresources|symlink|
-.tmux.conf|symlink|
-.vimrc|symlink|
+#.tmux.conf|symlink|
+#.vimrc|symlink|
 #i3|symlink|.config
 #.screenlayout|symlink|
 #.ghci|symlink|
